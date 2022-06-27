@@ -1,0 +1,98 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form action="/edit_student_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <h2>EDIT STUDENT DETAILS </h2>
+  <table class="table table-borderless">
+    <tr>
+      <th><input type="hidden" name="h1" value="{{ data['stud_id'] }}" class="form-control">Name</th>
+      <td><input minlength="6" pattern="[a-zA-Z\s]+" title="must not contain numbers in name. Only alphabhets and white spaces must be included" style="border: 1px solid lightskyblue" type="text" name="textfield" id="textfield" value="{{ data['s_name'] }}" class="form-control"/></td>
+    </tr>
+    
+    <tr>
+      <th>Email</th>
+      <td><input data-validate = "Valid email is required: ex@abc.xyz" style="border: 1px solid lightskyblue" type="email" name="textfield2" id="textfield2" value="{{ data['email'] }}" class="form-control" readonly/></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><input maxlength="10" pattern="[0-9]+" style="border: 1px solid lightskyblue" type="text" name="textfield3" id="textfield3" value="{{ data['phone'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+       <th>Department</th>
+       <td><label for="select1"></label>
+         <select style="border: 1px solid lightskyblue" name="select1" id="select1" class="form-control">
+             {% for i in dept %}
+                  <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+              {% endfor %}
+         </select>
+       </td>
+       
+    <tr>
+     <tr>
+       <th>Branch</th>
+       <td><label for="select2"></label>
+         <select style="border: 1px solid lightskyblue" name="select2" id="select2" class="form-control">
+             {% for i in branch %}
+                  <option value="{{ i["branch_id"] }}">{{ i["branch_name"] }}</option>
+              {% endfor %}
+         </select>
+   <tr>
+      <th>Year of join</th>
+      <td>
+      <input style="border: 1px solid lightskyblue"type="text" name="textfield4" id="textfield4" value="{{ data['year'] }}" class="form-control"/>
+      </p>
+      </td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><input style="border: 1px solid lightskyblue" type="file" name="fileField" id="fileField" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+       <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+</form>
+  </div>
+<script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var id, toid;
+
+        $("#select1").change(function () {
+            var id = $(this).val();
+
+
+                $.ajax({
+                    url: '/branch_ajax',
+                    type: 'POST',
+                     dataType: 'json',
+                    data: {'depid': id},
+                    success: function (response) {
+                        $("#select2").empty();
+                        var ln = response["data"].length;
+
+                        for (i = 0; i < ln; i++) {
+                            var id = response["data"][i]["branch_id"];
+                            var name = response["data"][i]["branch_name"];
+                            $("#select2").append("<option value="+id+">"+name+"</option>");
+
+
+
+
+
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert("error   :   ",error);
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+
+{% endblock %}

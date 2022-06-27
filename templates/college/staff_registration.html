@@ -1,0 +1,49 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form  action="/staff_registration_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+  <table class="table table-borderless">
+    <tr>
+      <td><a href="/reg_staffs" class="btn btn-dark">register staffs as a file</a></td>
+    </tr>
+  </table>
+  <h2>staff registration</h2>
+  <table class="table table-borderless">
+      <tr>
+        <th>Name</th>
+        <td><input style="border: 1px solid lightskyblue" type="text" type="text" name="textfield" id="textfield" class="form-control" required/></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+        <td><input style="border: 1px solid lightskyblue"  type="email"  name="textfield2" id="textfield2" class="form-control" required/></td>
+          </div>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><input style="border: 1px solid lightskyblue" pattern="[0-9]{10}" title="phone number must contain 10 digits " minlength="10" type="tel" name="textfield3" id="textfield3" class="form-control"/></td>
+      </tr>
+      <tr>
+        <th>Department</th>
+        <td>
+          <select style="border: 1px solid lightskyblue" type="text" name="select1" id="select" class="form-control">
+             <option value="     "></option>
+              {% for i in dept %}
+                  <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+              {% endfor %}
+            </select></td>
+      </tr>
+      <tr>
+      <th>Image</th>
+      <td><input style="border: 1px solid lightskyblue" type="file" name="fileField" id="fileField" class="form-control"/></td>
+    </tr>
+    <tr>
+  <tr>
+      <td>&nbsp;</td>
+       <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+    </tr>
+    </table>
+</form>
+  </div>
+{% endblock %}

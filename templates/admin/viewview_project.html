@@ -1,0 +1,120 @@
+{% extends "adminhome.html" %}
+{% block body %}
+<div class="container" style="top:-10%">
+<form id="form1" name="form1" method="post" action="/viewview_project_post">
+
+  <p>&nbsp;</p>
+  <table class="table table-borderless" style="background: rgba(0,0,128,0.2);border:solid 1px black;">
+      <th>Year</th>
+        <td>
+            <label for="select3"></label>
+        <select name="select3" id="select3" class="form-control" style="background-color: whitesmoke">
+      <option></option>
+            {% for i in range(2010,2030) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select></td>
+
+      <td colspan="2"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+
+    </tr>
+  <tr>
+      <td><p></p></td>
+  </tr>
+     <tr>
+         <th>Title</th>
+ <td><input type="text" name="textbox10" class="form-control" placeholder="Search" style="background-color: whitesmoke"/></td>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="view" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table-bordered" style="background-color: whitesmoke">
+      <tr style="background-color: lightblue;">
+     <th><br>Sl_No<br><br></td>
+      <th>Title</td>
+      <th>Abstract</td>
+      <th>project Details</td>
+{#      <th>journal</th>#}
+        <th>&nbsp;</th>
+{#      <th>github link</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+       <th>Project Area</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <th><h3>{{ i['title'] }}</h3></th>
+      <td><textarea cols="30", rows="15" readonly>{{ i['abstract'] }}</textarea></td>
+    <td><br><a href="{{ i['report'] }}" download ><b>Report</b></a><br><br><a href="{{ i['journal'] }}" download><b>Journal</b></a><br><br><a href="{{ i['demo'] }}" view><b>Demo</b></a><br><br><a href="{{ i['githublink'] }}" view><b>githublink:</b></a></td>
+        <td>{{ i['p_year'] }}<br><br>{{ i['dept_name'] }}<br> <br>{{ i['s_name'] }}</td>
+      <th>{{ i['project_area'] }}<br><br><br><br></th>
+{#    <td>  <td><a href="/report_word_extraction/{{ i["project_id"] }}">tokenize</a> </td>#}
+{# </td>#}
+
+    </tr>
+          <tr>&nbsp;</tr>
+          <tr>&nbsp;</tr>
+          <tr style="border:deepskyblue solid;">&nbsp;</tr>
+          <tr>&nbsp;</tr>
+          <tr>&nbsp;</tr>
+      {% endfor %}
+
+  </table>
+</form>
+  </div>
+
+{% endblock %}
+
+{#{% extends "adminhome.html" %}#}
+{#{% block body %}#}
+{#    <div class="container">#}
+{##}
+{#<form id="form1" name="form1" method="post" action="/view_project_post">#}
+{#  <p>&nbsp;</p>#}
+{#  <table class="table table-borderless">#}
+{#    <tr>#}
+{#      <td><input type="text" name="search_project" id="textfield" class="form-control"/></td>#}
+{#      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-inverse-primary" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#  <p>&nbsp;</p>#}
+{#  <table class="table table-striped">#}
+{#    <tr>#}
+{#      <th>Sl_No</th>#}
+{#        <th>title</th>#}
+{#      <th>Abstract</th>#}
+{#      <th>Report</th>#}
+{#      <th>Year</th>#}
+{#      <th>Demo</th>#}
+{#      <th>Journal</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+{#        <th>college</th>#}
+{#          <th>Project area</th>#}
+{##}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>{{ loop.index }}</td>#}
+{#      <th>Title:<h3>{{ i['title'] }}</h3><br><br>{{ i['p_year'] }} &nbsp;&nbsp;&nbsp;&nbsp;{{ i['dept_name'] }}</th>#}
+{#        <textarea cols="40" rows="20" readonly>#}
+{#        <td>{{ i['abstract'] }}</td>#}
+{#        </textarea>#}
+{#        <td>{{ i['year'] }}</td>#}
+{#        <td><a href="#">{{ i['demo'] }}</a></td>#}
+{#        <td><a href="#">{{ i['journal'] }}</a></td>#}
+{#      <td>{{ i['branch_name'] }}</td>#}
+{#     <th>author:{{ i['s_name'] }}<br><br><br><br>{{ i['project_area'] }}</th>#}
+{#        <th><br><a href="/viewviewview_project/{{ i['project_id'] }}"  class="btn btn-primary">View More ..</a><br><br></th>#}
+{#      <td>{{ i['c_name'] }}</td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{##}
+{#  </table>#}
+{#</form>#}
+{#</div>#}
+{#{% endblock %}#}

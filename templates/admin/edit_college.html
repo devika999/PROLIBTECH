@@ -1,0 +1,87 @@
+{% extends "adminhome.html" %}
+{% block body %}
+    <div class="container" style="position:relative; top:2px" align="center">
+
+<form action="/edit_college_post" method="post" name="form1" id="form1" enctype="multipart/form-data">
+  <table class="table table-borderless" style="background: -moz-mac-menushadow">
+       <tr>
+          <td><img src="{{ data['image'] }}" height="500px" width="500px"></td>
+      </tr>
+    <tr>
+      <th><input type="hidden" name="h1" value="{{ data['college_id'] }}" class="form-control">Name</th>
+      <td><input type="text" name="textfield" id="textfield" value="{{ data['c_name'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Place</th>
+      <td><input type="text" name="textfield2" id="textfield2" value="{{ data['place'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Post</th>
+      <td><input type="text" name="textfield3" id="textfield3" value="{{ data['post'] }}" class="form-control"/></td>
+    </tr>
+           <th>State</th>
+        <td><select name="state" id="state" value="{{ data['c_state'] }}" class="form-control">
+            <option value="kerala">Kerala</option>
+
+         </select>
+    </td>
+       <tr>
+      <th>district</th>
+           <td><select name="district" id="state" value="{{ data['district'] }}" class="form-control">
+               <option value="tvm">Trivandrum</option>
+          <option name="Kollam">Kollam</option>
+          <option name="pathanamthitta">pathanamthitta</option>
+          <option name="alapuzha">alapuzha</option>
+          <option name="kottayam">Kottayam</option>
+          <option name="idukki">Idukki</option>
+          <option name="ekm">Ernakulam</option>
+          <option name="tsr">Thrissur</option>
+          <option name="palakkad">Palakkad</option>
+          <option name="malapuram">Malappuram</option>
+          <option name="wayanad">Wayanad</option>
+          <option name="Kozhikode">Kozhikode</option>
+          <option name="Kannur">Kannur</option>
+          <option name="Kasarkode">Kasarkode</option>
+          <option name=""></option>
+         </select> </td>
+    </tr>
+    </tr>
+    <tr>
+      <th>Pin</th>
+      <td><input type="text" name="textfield5" id="textfield5" value="{{ data['pin'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><input type="text" name="textfield7" id="textfield7"  value="{{ data['phone'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><input type="text" name="textfield8" id="textfield8" value="{{ data['email'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th> Website </th>
+      <td> <input type="text" name="textfield9" id="textfield9" value="{{ data['website'] }}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td>
+          <input type="file" name="fileField" id="fileField" class="form-control"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <input type="submit" name="button" id="button" value="Submit" class="btn btn-inverse-primary"/>
+      </td>
+    </tr>
+  </table>
+  
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+    </div>
+{% endblock %}

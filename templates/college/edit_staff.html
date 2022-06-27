@@ -1,0 +1,41 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form action="/edit_staff_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+  <h2>Edit staff details</h2>
+  <table class="table table-borderless">
+      <tr>
+        <th><input type="hidden" name="h1" value="{{ data['staff_id'] }}" class="form-control">Name</th>
+        <td><input style="border: 1px solid lightskyblue;" type="text" name="textfield" id="textfield" value="{{ data['name'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><input style="border: 1px solid lightskyblue;" type="text" name="textfield2" id="textfield2" value="{{ data['email'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td><input style="border: 1px solid lightskyblue;" type="text" name="textfield3" id="textfield3" value="{{ data['phone'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+        <th>Department</th>
+        <td>
+          <select style="border: 1px solid lightskyblue;" name="select1" id="select" class="form-control">
+              {% for i in dept %}
+                  <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+              {% endfor %}
+            </select></td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td><input style="border: 1px solid lightskyblue;" type="file" name="fileField" id="fileField" class="form-control"/></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/>
+          <a href="/view_staff1">back</a></td>
+        </tr>
+    </table></td>  
+</table>
+</form>
+  </div>
+{% endblock %}

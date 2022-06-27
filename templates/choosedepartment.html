@@ -1,0 +1,78 @@
+{% extends "index_page.html" %}
+{% block body %}
+<div class="container" style="height: 100%;">
+            <form id="form1" name="form1" method="post" action="/choosedepartment_post">
+  <table class="table table-borderless" style="background-color: whitesmoke;width: 60%">
+   <tr><br><br><br><br><br><br><br><br>
+{#       <th>Choose a college</th>#}
+       <td><label for="select1"></label>
+         <select class="form-control" style="color:white;width:75%;background-color:black;border: 1px solid lightskyblue" name="select1" id="select1" class="form-control" required>
+          <option value="">Choose a college</option>
+             {% for i in col %}
+                  <option value="{{ i["login_id"] }}">{{ i["c_name"] }}</option>
+              {% endfor %}
+         </select>
+
+     </tr>
+      <tr>
+{#       <th>Choose a Department</th>#}
+       <td><label for="select2"></label>
+         <select style="color:white;width:75%;background-color:black;border: 1px solid lightskyblue;" name="select2" id="select2" class="form-control" required>
+             <option value=" ">Choose a Department</option>
+{#             {% for i in dept %}#}
+{#                  <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>#}
+{#              {% endfor %}#}
+         </select>
+
+     </tr>
+  <tr>
+{#      <td>&nbsp;</td>#}
+       <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+    </tr>
+            </table>
+        </form>
+</div>
+
+  </div>
+     <script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var id, toid;
+
+        $("#select1").change(function () {
+            var id = $(this).val();
+
+
+                $.ajax({
+                    url: '/dept_ajax2',
+                    type: 'POST',
+                     dataType: 'json',
+                    data: {'college_id': id},
+                    success: function (response) {
+                        $("#select2").empty();
+                        var ln = response["data"].length;
+
+                        for (i = 0; i < ln; i++) {
+                            var id = response["data"][i]["dept_id"];
+                            var name = response["data"][i]["dept_name"];
+                            $("#select2").append("<option value="+id+">"+name+"</option>");
+
+
+
+
+
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert("error   :   ",error);
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+
+{% endblock %}

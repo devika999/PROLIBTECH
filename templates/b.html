@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+{#{% extends "allviewhome.html" %}#}
+{#{% block body %}#}
+
+	<meta content="initial-scale=1, maximum-scale=1,
+		user-scalable=0" name="viewport" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Datatable plugin CSS file -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+	<!-- jQuery library file -->
+	<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js">
+	</script>
+
+	<!-- Datatable plugin JS library file -->
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+	</script>
+</head>
+
+<body style="background:url('/static/d/Capture.jpg')">
+<h2>Search Results </h2>
+
+	<!--HTML table with student data-->
+
+
+	<table id="tableID" class="display" style="width:100%">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th><th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+                <td>
+
+                </td>
+                <td></td>
+			</tr>
+{#			<tr>#}
+{#				<td>ST2</td>#}
+{#				<td>Wincy</td>#}
+{#				<td>36</td>#}
+{#				<td>Female</td>#}
+{#				<td>170</td>#}
+{#			</tr>#}
+{#			<tr>#}
+{#				<td>ST3</td>#}
+{#				<td>Ashmita</td>#}
+{#				<td>41</td>#}
+{#				<td>Female</td>#}
+{#				<td>860</td>#}
+{#			</tr>#}
+
+            {% for i in data %}
+			<tr>
+				<td>{{ loop.index }}.</td>
+      <td><h3>{{ i['title'] }}</h3></td>
+      <td><textarea cols="30" rows="10" readonly>{{ i['abstract'] }}</textarea></td>
+{#    <td><br><b>Report:</b><a href="#">{{ i['report'] }}</a><br><br><b>Journal:</b><a href="#">{{ i['journal'] }}</a><br><br><b>Demo:</b><a href="#">{{ i['demo'] }}</a><br><br><b>githublink:</b><a href="#">{{ i['githublink'] }}</a></td>#}
+        <td>{{ i['p_year'] }}<br><br>{{ i['dept_name'] }}<br> <br>{{ i['s_name'] }}</td>
+      <td>{{ i['project_area'] }}</td>
+                <td></td>
+{#             {% if i['rt']=="0" or i["rt"] ==0 %}#}
+{#                <td>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{#                  {% elif i['rt']=="1" or i["rt"] ==1 %}#}
+{#                <td>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{##}
+{#                 {% elif i['rt']=="2" or i["rt"] ==2 %}#}
+{#                <td>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{#                   {% elif i['rt']=="3" or i["rt"] ==3 %}#}
+{#                <td>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{#                 {% elif i['rt']=="4" or i["rt"] ==4 %}#}
+{#                <td>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/empty.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{#                  {% else %}#}
+{#                <td>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                       <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{#                    <img src="/static/d/full.png" width="40px" height="40px"/>#}
+{##}
+{##}
+{#                </td>#}
+{#{% endif %}#}
+          <td>
+{#          <input type="text" style="width: 35px;height:35px;background-color: yellow" class="rounded-circle"><br>#}
+          view more<a href="" class="btn btn-primary">SIGN IN</a></td>
+
+			</tr>
+            {% endfor %}
+
+
+
+
+		</tbody>
+	</table>
+
+	<script>
+
+		/* Initialization of datatable */
+		$(document).ready(function() {
+			$('#tableID').DataTable({ });
+		});
+	</script>
+</body>
+
+</html>

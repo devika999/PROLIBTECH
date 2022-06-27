@@ -1,0 +1,88 @@
+{% extends "allviewhome.html" %}
+{% block body %}
+<div class="search_container" style="width: 200%;position: relative;left: -13%">
+    <form action="/searchpro_post" method="post" style="background-image: url('/static/d/download.jpg');">
+        <br>
+            <br> <br><br> <br><br>
+    <table class="table table-borderless" style="position: relative;width:100%;">
+        <tr></tr></tr>
+      <tr style="position: relative;right:-25%">
+
+          <th> <h2 style="color: orangered">SEARCH PROJECTS...</h2></th>
+      </tr>
+    <tr style="position: relative;right:-20%">
+            <th>
+                <select style="color:white;width:5.5%;background-color:black;border: 1px solid lightskyblue;position: relative;bottom: -34px;left:-2%" name="select" id="selectp" class="form-control" required>
+          <option value="all">keyword</option>
+                    <option value="title">Title</option>
+                    <option value="parea">Project area</option>
+                    <option value="department">Department</option>
+                </select>
+
+                <input type="text" name="textbox10" size="20px" style="width:18%;height:33px; font-size: 14pt;position: relative;right: -3.45%" placeholder="Search" />
+                <input type="submit" name="button10" id="button" value="search" class="rounded-right" style="background:darkorange;width:5%;height:33px; font-weight: bold;position: relative;right:-3%"/>
+            </th>
+        <td></td>
+
+        </tr>
+       <tr style="position: relative;right:-30%">
+            <td>
+                <b style="background-color: black;color: white" >From:</b>
+        <select name="select2" id="select2" class="form-control" style="width: 5%;border:2px solid yellow;background: white">
+      <option value="2010" selected>2010</option>
+            {% for i in range(2010,2050) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select> <b style="background-color: black;color: white">To:</b>
+        <select name="select3" id="select3" class="form-control" style="width: 5%;border:2px solid yellow;background: white">
+      <option value="2050" selected><b>2050</b></option>
+            {% for i in range(2010,2050) %}
+            <option style="color: blue" value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+            </td>
+
+        </tr>
+
+
+        <tr style="position: relative;right:-20%"><th><a href="/choosedepartment1" class="btn btn-google" style="position: relative;right: -10%">Advanced search</a></th></tr>
+    </table>
+    </form>
+</div>
+
+<div class=result>
+<form id="form1" name="form1" method="post" action="/">
+  <table class="table-bordered" style="background-color: whitesmoke">
+  <br>
+{#      <tr style="background-color: lightblue;">#}
+{#     <th><br>Sl_No<br><br></td>#}
+{#      <th>Title</td>#}
+{#      <th>Abstract</td>#}
+{#      <th>project Details</td>#}
+{#      <th>journal</th>#}
+{#        <th>&nbsp;</th>#}
+{#      <th>github link</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+{#       <th>Project Area</th>#}
+{#          <th></th>#}
+{#    </tr>#}
+      {% for i in data %}
+    <tr>
+      <th>{{ loop.index }}.</th>
+      <th><h3>{{ i['title'] }}</h3></th>
+      <td><textarea cols="30", rows="10" readonly>{{ i['abstract'] }}</textarea></td>
+{#    <td><br><b>Report:</b><a href="#">{{ i['report'] }}</a><br><br><b>Journal:</b><a href="#">{{ i['journal'] }}</a><br><br><b>Demo:</b><a href="#">{{ i['demo'] }}</a><br><br><b>githublink:</b><a href="#">{{ i['githublink'] }}</a></td>#}
+        <td>{{ i['p_year'] }}<br><br>{{ i['dept_name'] }}<br> <br>{{ i['s_name'] }}</td>
+      <th>{{ i['project_area'] }}</th>
+          <th>
+{#          <input type="text" style="width: 35px;height:35px;background-color: yellow" class="rounded-circle"><br>#}
+          <a href="/viewmorepro//{{ i['project_id'] }}" class="btn btn-primary">Purchase to viewmore</a></th>
+
+      {% endfor %}
+
+  </table>
+</form>
+  </div>
+{% endblock %}

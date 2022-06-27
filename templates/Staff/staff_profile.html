@@ -1,0 +1,36 @@
+{% extends "staffhome.html" %}
+{% block body %}
+{#    .img::before{#}
+{#  content: '';#}
+{#  position: absolute;#}
+{#  height: 100%;#}
+{#  width: 50%;#}
+{#  background: black;#}
+<div class="container">
+<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+  <h2>Staff profile</h2>
+  <table class="table table-borderless">
+        <tr>
+          <td><img src="{{ data['image'] }}" height="300px" width="300px"><a  href="/staffedit_profile/{{ data['staff_id'] }}">Edit</a></td>
+       </tr>
+        <input type="hidden" name="h1" value="{{ data['staff_id'] }}" class="form-control">
+
+          <td> <b><label for="textfield">Name</label></b><input type="text" name="textfield" id="textfield" value="{{ data['name'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+
+
+          <td><b><label for="textfield2">Email</label></b><input type="text" name="textfield2" id="textfield2" value="{{ data['email'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+
+          <td><b><label for="textfield3">Phone</label></b><input type="text" name="textfield3" id="textfield3" value="{{ data['phone'] }}" class="form-control"/></td>
+      </tr>
+      <tr>
+          <td><b><label for="textfield4">Department</label></b><input type="text" name="textfield4" id="textfield4" value="{{ data["dept_name"] }}" class="form-control" /></td>
+      </tr>
+    </table>
+</form>
+  </div>
+{% endblock %}

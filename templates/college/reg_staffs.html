@@ -1,0 +1,43 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="/reg_staffs_post">
+<table>
+ 
+    <tr>
+    <td>select department:</td>
+    <td>
+      <select  style="border: 1px solid lightskyblue;" name="select" id="select" class="form-control">
+          {% for i in dept %}
+              <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+          {% endfor %}
+      </select>
+  </tr>
+
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+{#  <tr>#}
+{#    <td>year of join:</td>#}
+{#    <td><label for="select3"></label>#}
+{#      <select name="select3" id="select3" class="form-control">#}
+{#           {% for i in range(2010,2030) %}#}
+{#            <option value="{{ i }}">{{ i }}</option>#}
+{#            {% endfor %}#}
+{#    </select></td>#}
+{#  </tr>#}
+  <tr>
+    <td>upload file:</td>
+    <td><label for="fileField"></label>
+    <input type="file" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input name="SUBMIT" type="submit" class="btn- btn-inverse-primary"/></td>
+      <td>To download sample file<a href="/static/staff/staffdetails.csv">CLICK HERE</a></td>
+  </tr>
+</table>
+</form>
+ </div>
+
+{% endblock %}

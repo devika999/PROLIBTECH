@@ -1,0 +1,34 @@
+{% extends "adminhome.html" %}
+{% block body %}
+<div class="container">
+
+<form id="form1" name="form1" method="post" action="/view_student_post">
+  <table class="table table-bordered">
+    <tr>
+      <th><label for="select">select branch</label>
+        <select name="select" id="select">
+        </select></th>
+      <td><input type="submit" name="button" id="button" value="Submit" /></td>
+    </tr>
+    <input name="input" type="button" />
+  </table>
+  <p>&nbsp;</p>
+  <table>
+    <tr>
+      <th>Sl_No</th>
+      <th>Name</th>
+{#      <th>Department</th>#}
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+        {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['name'] }}</td>
+      <td>{{ i['phone'] }}</td>
+        <td>{{ i['email'] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</div>

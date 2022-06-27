@@ -1,0 +1,67 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" method="post" action="/view_pprojects_post">
+
+  <p>&nbsp;</p>
+  <table class="">
+      <th>Year</th>
+        <td>
+            <label for="select3"></label>
+        <select style="border:2px solid black" name="select3" id="select3" class="form-control">
+      <option></option>
+            {% for i in range(2010,2030) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select></td>
+
+      <td colspan="2"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+
+    </tr>
+  <tr>
+      <td><p></p></td>
+  </tr>
+     <tr>
+         <th>search</th>
+ <td><input style="border:2px solid black" type="text" name="textbox10" class="form-control" placeholder="Search" /></td>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="view" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table-bordered">
+      <tr style="background-color: lightblue;">
+     <th><br>Sl_No<br><br></td>
+      <th>Title</td>
+      <th>Abstract</td>
+      <th>project Details</td>
+{#      <th>journal</th>#}
+        <th>&nbsp;</th>
+{#      <th>github link</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+       <th>Project Area</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <th><h3>{{ i['title'] }}</h3></th>
+      <td><textarea cols="30", rows="10" readonly>{{ i['abstract'] }}</textarea></td>
+        <td><br><a href="{{ i['report'] }}" download ><b>Report</b><br><br></a><a href="{{ i['journal'] }}" download ><b>Journal</b></a><br><br><a href="{{ i['demo'] }}" view ><b>Demo</b><a href="{{ i['githublink'] }}" view ><br><br><b>Githublink</b></a></a></td>
+          <td>{{ i['p_year'] }}<br><br>{{ i['dept_name'] }}<br> <br>{{ i['s_name'] }}</td>
+      <th>{{ i['project_area'] }}<br><br><br><br></th>
+
+    </tr>
+          <tr>&nbsp;</tr>
+          <tr>&nbsp;</tr>
+          <tr style="border:deepskyblue solid;">&nbsp;</tr>
+          <tr>&nbsp;</tr>
+          <tr>&nbsp;</tr>
+      {% endfor %}
+
+  </table>
+</form>
+  </div>
+
+{% endblock %}

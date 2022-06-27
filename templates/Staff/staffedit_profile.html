@@ -1,0 +1,18 @@
+{% extends "staffhome.html" %}
+{% block body %}
+<div class="container">
+<form action="/staffedit_profile_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-borderless">
+    <tr>
+      <th><input type="hidden" name="h1" value="{{data['staff_id']}}" class="form-control">Image</th>
+      <td><input style="border: 1px solid lightskyblue" type="file" name="fileField1" id="fileField" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+       <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+</form>
+  </div>
+
+{% endblock %}

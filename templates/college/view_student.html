@@ -1,0 +1,121 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" method="post" action="/view_student_post">
+
+  <p>&nbsp;</p>
+  <table class="">
+
+    <tr>
+      <th>Department</th>
+      <td><select name="select1" id="select1" class="form-control">
+          {% for i in dept %}
+              <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+          {% endfor %}
+          </select>
+      </td>
+
+
+      <th>Branch</th>
+      <td><label for="select2"></label>
+        <select name="select2" id="select2" class="form-control">
+{#            {% for i in branch %}#}
+{#      <option></option>#}
+{#                  <option value="{{ i["branch_id"] }}">{{ i["branch_name"] }}</option>#}
+{#              {% endfor %}#}
+      </select></td>
+
+      <th>Year of join</th>
+        <td>
+            <label for="select3"></label>
+        <select name="select3" id="select3" class="form-control">
+      <option></option>
+            {% for i in range(2010,2030) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select></td>
+
+      <td colspan="2"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+
+    </tr>
+  <tr>
+      <td><p></p></td>
+  </tr>
+     <tr>
+         <th>Name</th>
+ <td><input type="text" name="textbox10" class="form-control" placeholder="Search" /></td>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="view" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered,table table-striped">
+    <tr style="background-color: lightblue;">
+      <th>Sl_No</th>
+      <th>Name</th>
+{#        <th>photo</th>#}
+      <th>Phone</th>
+      <th>Email</th>
+         <th>Department</th>
+        <th>Branch</th>
+        <th>Year</th>
+         </tr>
+      {% for i in data %}
+    <tr>
+
+        <td>{{ loop.index }}</td>
+        <td>{{ i['s_name'] }}</td>
+{#         <td><img src="{{ data['image'] }}" height="500px" width="500px">#}
+        <td>{{ i['phone'] }}</td>
+        <td>{{ i['email'] }}</td>
+         <td>{{ i['dept_name'] }}</td>
+        <td>{{ i['branch_name'] }}</td>
+        <td>{{ i['year']}}</td>
+        <td><a href="/edit_student/{{ i['stud_id'] }}" class="btn btn-success">Edit </a>
+          <a href="/delete_student/{{ i['stud_id'] }}" class="btn btn-danger">delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+  </div>
+    <script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var id, toid;
+
+        $("#select1").change(function () {
+            var id = $(this).val();
+
+
+                $.ajax({
+                    url: '/branch_ajax',
+                    type: 'POST',
+                     dataType: 'json',
+                    data: {'depid': id},
+                    success: function (response) {
+                        $("#select2").empty();
+                        var ln = response["data"].length;
+
+                        for (i = 0; i < ln; i++) {
+                            var id = response["data"][i]["branch_id"];
+                            var name = response["data"][i]["branch_name"];
+                            $("#select2").append("<option value="+id+">"+name+"</option>");
+
+
+
+
+
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert("error   :   ",error);
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+{% endblock %}

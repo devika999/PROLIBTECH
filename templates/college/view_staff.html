@@ -1,0 +1,51 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form style="width: 500px;" id="form1" name="form1" method="post" action="/view_staff_post">
+  <table class="table table-borderless">
+    <tr>
+      
+      <th><p>
+          <label for="select1">search by department</label></p>
+
+          <select style="border:2px solid black" name="select1" id="select" class="form-control">
+              {% for i in dept %}
+                  <option style="color:black" value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+              {% endfor %}
+            </select>
+        </th>
+      </tr>
+
+         <td> <input type="submit" name="button" id="button" value="Submit" class="btn btn-primary" />
+      </td>
+    </tr>
+
+  </table> 
+  <p>&nbsp;</p>
+  <table class="table table-borderless table-striped">
+    <tr style="background-color: lightblue">
+        <th><p>Sl_No</p></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+{#        <th>Image</th>#}
+      
+    </tr>
+      {% for i in data %}
+    <tr>
+
+        <td>{{ loop.index }}</td>
+        <td>{{ i['name'] }}</td>
+      <td>{{ i['email' ]}}</td>
+        <td>{{ i['phone'] }}</td>
+{#        <td><img src="{{ i['image'] }}" height="100px" width="100px"></td>#}
+        <td><a href="/edit_staff/{{ i['staff_id'] }}" class="btn btn-success">Edit </a></td>
+          <td><a href="/delete_staff/{{ i['staff_id'] }}" class="btn btn-danger">delete</a></td>
+    </tr>
+      {% endfor %}
+
+
+  </table>
+</form>
+  </div>
+{% endblock %}

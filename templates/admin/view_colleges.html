@@ -1,0 +1,47 @@
+{% extends "adminhome.html" %}
+{% block body %}
+    <div class="container" style="position:relative; top:-20px">
+
+<form id="form1" name="form1" method="post" action="/view_colleges_post">
+  <table class="table table-borderless">
+    <tr>
+      <td><label for="textfield"></label>
+
+      <input  class="rounded-pill" type="text" name="search_college" id="textfield" class="form-control" style="width:50%;height: 20%; font-size: 18pt"/>
+          <input class="rounded-pill" type="submit" name="button" id="button" value="Search" style="background:deepskyblue;width:10%;height:33px; font-weight: bold" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="" style="background-color: whitesmoke">
+    <tr class="bg-inverse-icon-light">
+      <th height="66">Sl_No</th>
+      <th>Name</th>
+      <th>Address</th>
+{#      <th width="34">Post</th>#}
+{#      <th width="60">District</th>#}
+{#      <th width="26">Pin</th>#}
+{#      <th width="39">State</th>#}
+      <th>Contact</th>
+{#      <th width="47">Email</th>#}
+{#      <th width="64">website</th>#}
+{#      <th width="64">image</th>#}
+      <td>&nbsp;</td>
+
+    </tr>
+
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td><img src="{{ i['image'] }}" height="100px" width="100px"><br>{{ i['c_name' ]}}</td>
+      <td>{{ i['place'] }}<br>{{ i['post'] }}<br>{{ i['district'] }}<br>{{ i['pin'] }}<br>{{ i['c_state'] }}</td>
+      <td>{{ i['phone'] }}<br>{{ i['email'] }}<br>{{ i['website'] }}</td>
+{#      <td></td>#}
+      <th><a href="/edit_college/{{ i['college_id'] }}"  class="btn btn-success">Update</a><br>
+          <br><a href="/delete_college/{{ i['college_id'] }}" class="btn btn-danger">Delete</a><br>
+          <br><a href="/view_department/{{ i['login_id'] }}"  class="btn btn-primary">More ..</a><br><br></th>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</div>
+{% endblock %}

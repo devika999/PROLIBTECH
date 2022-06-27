@@ -1,0 +1,36 @@
+{% extends "staffhome.html" %}
+{% block body %}
+    <div class="container">
+<form id="form1" name="form1" method="post" action="/staff_changepwd_post">
+<h3 style="color: blue"> change password</h3>
+  <p>&nbsp;</p>
+  <table class="table table-borderless">
+{#    <tr>#}
+{#      <th> old password: </th>#}
+{#      <td><label for="textfield"></label>#}
+{#      <input type="password" name="textfield" id="textfield" required class="form-control"/></td>#}
+{#    </tr>#}
+    <tr>
+      <th><label for="textfield2">New password</label>
+      <input style="border:1px solid rgba(0,178,255,0.98);" type="password" name="textfield2" id="textfield2" minlength="8" maxlength="15" required class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="textfield3" class="form-control" />
+    </th>
+    </tr>
+    <tr>
+      <th><label for="textfield3">confirm new password</label>
+      <input style="border:1px solid rgba(0,178,255,0.98);" type="password" name="textfield3"  id="textfield3" class="form-control" />
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="button" id="button" value="Submit" class="btn btn-inverse-primary"/></td>
+    </tr>
+  </table>
+
+</form>
+</div>
+    <div id="message" class="align-content-center" style="padding: 10px 35px;color:orangered">
+  <h4>Password must contain the following:</h4>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+    <form style="width: 500px;height: 200px" id="form1" name="form1" method="post" action="/add_branch_post">
+ <table class="table table-borderless">
+
+    <tr>
+
+      <th><label for="textfield">New Branch name</label>
+{#      <input style="border: 1px solid lightskyblue" type="text" name="textfield" id="textfield" class="form-control"/></th>#}
+            <input type="text"  list="departmentlist" name="textfield">
+        <datalist id="departmentlist">
+            <option value="MCA"/>
+            <option value="Btech"/>
+            <option value="Mtech"/>
+            <option value="PHD"/>
+        </datalist></th>
+    </tr>
+    <tr>
+      <td><input name="" type="submit" class="btn btn-primary"/></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,94 @@
+{% extends "allviewhome.html" %}
+{% block body %}
+<div class="search_container" style="width: 200%;position: relative;left: -13%">
+    <form action="/searchp1_post" method="post" style="position: relative;left:-95%;width:250%;background-image: url('/static/d/download.jpg');">
+        <br>
+            <br> <br><br> <br><br>
+    <table class="table table-borderless" style="position: relative;right:-50%">
+
+      <tr style="position:relative;left: -5%">
+          <th> <h2 style="color: yellowgreen">SEARCH PROJECTS...</h2></th>
+      </tr>
+    <tr>
+            <th>
+                <select style="color:white;width:3%;background-color:black;border: 1px solid lightskyblue;position: relative;left:-7%;bottom: -34px;" name="select" id="selectp" class="form-control" required>
+          <option value="all">keyword</option>
+                    <option value="title">Title</option>
+                    <option value="parea">Project area</option>
+                    <option value="department">Department</option>
+                </select>
+
+                <input type="text" name="textbox10" size="20px" style="width:10%;height:33px; font-size: 14pt;position: relative;left: -4%" placeholder="Search"/>
+                <input type="submit"  name="button10" id="button" value=" " class="rounded-right" style="background:orange  url('/static/d/loupe.png') no-repeat center;width:1%;height:33px; font-weight: bold;position: relative;left: -4.1%"/>
+
+            </th>
+        </tr>
+       <tr style="position: relative;">
+            <td>
+                <b style="background-color: black;color: white" >From:</b>
+        <select name="select2" id="select2" class="form-control" style="width: 3%;border:2px solid yellow;background: white">
+      <option value="2010" selected>2010</option>
+            {% for i in range(2010,2050) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select> <b style="background-color: black;color: white">To:</b>
+        <select name="select3" id="select3" class="form-control" style="width: 3%;border:2px solid yellow;background: white">
+      <option value="2050" selected aria-selected="true"><b>2050</b></option>
+            {% for i in range(2010,2050) %}
+            <option style="color: blue" value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+            </td>
+        </tr>
+        <tr style="position: relative;right:-20%"><th><a href="/choosedepartment1" class="btn btn-google" style="position: relative;left: -20%">Advanced search</a></th></tr>
+    </table>
+    </form>
+</div>
+
+<div class=result>
+<form id="form1" name="form1" method="post" action="/">
+  <table class="table-bordered" style="background-color: whitesmoke">
+  <br>
+{#      <tr style="background-color: lightblue;">#}
+{#     <th><br>Sl_No<br><br></td>#}
+{#      <th>Title</td>#}
+{#      <th>Abstract</td>#}
+{#      <th>project Details</td>#}
+{#      <th>journal</th>#}
+{#        <th>&nbsp;</th>#}
+{#      <th>github link</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+{#       <th>Project Area</th>#}
+{#          <th></th>#}
+{#    </tr>#}
+      {% for i in data %}
+    <tr>
+      <th>{{ loop.index }}.</th>
+      <th><h3>{{ i['title'] }}</h3></th>
+      <td><textarea cols="30", rows="10" readonly>{{ i['abstract'] }}</textarea></td>
+      <td>{{ i['p_year'] }}<br><br>{{ i['dept_name'] }}<br> <br>{{ i['s_name'] }}</td>
+      <th>{{ i['project_area'] }}</th>
+          <th>
+           <a href="/user_view_rating//{{ i['project_id'] }}">view rating</a>
+         <a href="/viewmoreproject//{{ i['project_id'] }}" class="btn btn-primary">view more</a></th>
+
+      {% endfor %}
+  </table>
+</form>
+  </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js">
+	</script>
+
+	<!-- Datatable plugin JS library file -->
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+	</script>
+    <script>
+
+		/* Initialization of datatable */
+		$(document).ready(function() {
+			$('#tableID').DataTable({ });
+		});
+	</script>
+{% endblock %}

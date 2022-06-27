@@ -1,0 +1,51 @@
+{% extends "adminhome.html" %}
+{% block body %}
+    <div class="container">
+
+<form id="form1" name="form1" method="post" action="/view_project_post">
+  <p>&nbsp;</p>
+  <table class="table table-borderless" >
+    <tr>
+      <td><input type="text" name="search_project" id="textfield" class="form-control"/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-inverse-primary" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-striped">
+    <tr>
+      <th>Sl_No</th>
+        <th>title</th>
+      <th>Abstract</th>
+      <th>Report</th>
+      <th>Year</th>
+      <th>Demo</th>
+      <th>Journal</th>
+        <th>department</th>
+{#        <th>Branch</th>#}
+        <th>Student</th>
+        <th>college</th>
+          <th>Project area</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['title'] }}</td>
+        <td><a href="#">{{ i['abstract'] }}</a></td>
+      <td><a href="#">{{ i['report'] }}</a></td>
+        <td>{{ i['year'] }}</td>
+        <td><a href="#">{{ i['demo'] }}</a></td>
+        <td><a href="#">{{ i['journal'] }}</a></td>
+       <td>{{ i['dept_name'] }}</td>
+{#      <td>{{ i['branch_name'] }}</td>#}
+     <td>{{ i['s_name'] }}</td>
+      <td>{{ i['c_name'] }}</td>
+     <td>{{ i['project_area'] }}
+         <td><a href="/report_word_extraction/{{ i["project_id"] }}">tokenize</a> </td>
+    </tr>
+      {% endfor %}
+
+  </table>
+</form>
+</div>
+{% endblock %}

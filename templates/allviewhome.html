@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Website Layout | ProLibTech</title>
+    <link rel="stylesheet" href="/static/ho/style.css" />
+      <link rel="stylesheet" href="/static/adminhome/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" href="/static/adminhome/assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="/static/adminhome/assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/adminhome/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="/static/adminhome/assets/css/style.css" />
+    <link rel="shortcut icon" href="/static/adminhome/assets/images/favicon.png" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   </head>
+<body>
+  <nav>
+    <div class="menu">
+      <div class="logo">
+        <a href="#" style="color: orange">ProLibTech</a>
+      </div>
+      <ul>
+        <li><a href="/searchp1">Home</a></li>
+        <li><a href="/"></a><li class="nav-item nav-profile dropdown border-0">
+                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
+                  <img class="nav-profile-img mr-2" alt="" src="{{ session["photo"]}}"height="30px" width="30px" />
+                  <span class="profile-name">{{ session["clg"] }}</span>
+                </a></li>
+      </ul>
+        <li><a href="/all_login">LOGOUT</a></li>
+ </div>
+</nav>
+<div style="height:auto;width:100%;position: relative;">
+<div class="container" style="height: 200%;width:200%;">
+{% block body %}
+{% endblock %}
+</div>
+</div>
+</body>
+</html>

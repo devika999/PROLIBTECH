@@ -1,0 +1,23 @@
+{% extends "adminhome.html" %}
+{% block body %}
+    <div class="container">
+
+<form id="form1" name="form1" method="post" action="" style="position: relative;top:-10%">
+  <table class="table borderless,table table-striped" style="background-color: whitesmoke">
+      <h1>Departments</h1>
+      <tr style="background-color: #b1bcc7;height: 10px">
+        <th>Sl_No</th>
+        <th>Department Name</th>
+      </tr>
+          {% for i in data %}
+      <tr>
+        <td>&nbsp;{{ loop.index }}</td>
+        <td>&nbsp;{{ i['dept_name'] }}</td>
+         <th><a href="/view_staff/{{ i['dept_id'] }}" class="btn btn-primary">View Staffs</a></th>
+      </tr>
+        {% endfor %}
+  </table>
+</form>
+    </div>
+{% endblock %}
+

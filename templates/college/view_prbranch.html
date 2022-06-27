@@ -1,0 +1,26 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" method="post" action="">
+<table class="table table-borderless">
+<tr>
+
+    <td><a href="/view_prdepartment1">Back</a></td>
+</tr>
+</table>
+  <table class="table table-borderless,table table-striped">
+      <tr style="background-color: lightblue">
+
+        <th>Branch Name</th>
+      </tr>
+       {% for i in data %}
+    <tr>
+
+      <td><a href="/view_pprojects/{{ i['branch_id'] }}" class="btn btn-success">{{ i['branch_name' ]}}</a></td>
+ </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+  </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "adminhome.html" %}
+{% block body %}
+    <div class="container">
+
+<form id="form1" name="form1" method="post" action="/">
+  <table class="table table-striped">
+
+      {% for i in data %}
+    <tr>
+
+      <td>{{ loop.index }}</td>
+        <th>Title:<h3>{{ i['title'] }}</h3><br><br>{{ i['p_year'] }} &nbsp;&nbsp;&nbsp;&nbsp;{{ i['dept_name'] }}</th>
+{#        <th>author:{{ i['s_name'] }}<br><br>{{ i['project_area'] }}</th>#}
+        <th> ABSTRACT: <textarea cols="40" rows="20"readonly>
+        {{ i['abstract'] }}
+        </textarea></th>
+        <th>Report :<a href="#">{{ i['report'] }}</a><br><br>Demo :<a href="#">{{ i['demo'] }}</a>
+            <br><br>Journal :<a href="#">{{ i['journal'] }}</a> <br><br>Github :<a href="#">{{ i['githublink'] }}</a></th>
+{#      <td>{{ i['branch_name'] }}</td>#}
+
+
+{#      <td>{{ i['c_name'] }}</td>#}
+    </tr>
+      {% endfor %}
+
+  </table>
+</form>
+</div>
+{% endblock %}

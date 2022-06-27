@@ -1,0 +1,255 @@
+{% extends "allviewhome.html" %}
+{% block body %}
+    <style>
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+input.star { display: none; }
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input.star-1:checked ~ label.star:before { color: #F62; }
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+    </style>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+{#<div class="search_container" style="width: 200%;position: relative;left: -13%">#}
+{#    <form action="/searchp" method="post" style="background-image: url('/static/d/download.jpg')";>#}
+{#        <br>#}
+{#           #}
+{#    <table class="table table-borderless" style="position: relative;right:-15%">#}
+{#      <tr>#}
+{#          <th> <h2 style="color: navy">SEARCH PROJECTS...</h2></th>#}
+{#      </tr>#}
+{#        <tr>#}
+{#            <th>#}
+{#                <select style="color:white;width:3.5%;background-color:black;border: 1px solid lightskyblue;position: relative;bottom: -34px" name="select" id="select" class="form-control" required>#}
+{#          <option style="color: white" value="all">ALL</option>#}
+{#                    <option value="title">Title</option>#}
+{#                    <option value="parea">Project area</option>#}
+{#                    <option value="department">Department</option>#}
+{#                </select>#}
+{##}
+{#                <input type="text" name="textbox10" size="20px" style="width:18%;height:33px; font-size: 14pt;position: relative;right: -3.45%" placeholder="Search" />#}
+{#                <input type="submit" name="button10" id="button" value="search" class="rounded-right" style="background:darkorange;width:5%;height:33px; font-weight: bold;position: relative;right:-3%"/>#}
+{#            </th>#}
+{##}
+{#        </tr>#}
+{#        <tr style="position: relative;right:-5%">#}
+{#            <td><label for="textbox1"><b style="color: white;background-color: black"><h4 style="color: black">Year:</h4>From:</b></label>#}
+{#            <input type="textbox" style="border:2px solid orange;width: 5%;" name="textbox1" placeholder="yyyy" required>#}
+{#                <label for="textbox2"><b style="color: white;background-color: black">To:</b></label>#}
+{#            <input type="textbox" style="border:2px solid orange;width: 5%;" name="textbox2"  placeholder="yyyy" required></td>#}
+{#        </tr>#}
+{#        <tr><th><a href="/choosedepartment" class="btn btn-google" style="position: relative;right: -10%">Advanced search</a></th></tr>#}
+{#    </table>#}
+{#    </form>#}
+{#</div>#}
+
+<div class=result>
+<form id="form1" name="form1" method="post" action="/user_add_rating_post">
+<br> <br> <br> <br> <br> <br><br> <br>
+  <table class="table-borderless" style="background-color: whitesmoke;width: 100%">
+  <br>
+{#      <tr style="background-color: lightblue;">#}
+{#     <th><br>Sl_No<br><br></td>#}
+{#      <th>Title</td>#}
+{#      <th>Abstract</td>#}
+{#      <th>project Details</td>#}
+{#      <th>journal</th>#}
+{#        <th>&nbsp;</th>#}
+{#      <th>github link</th>#}
+{#        <th>department</th>#}
+{#        <th>Branch</th>#}
+{#        <th>Student</th>#}
+{#       <th>Project Area</th>#}
+{#          <th></th>#}
+{#    </tr>#}
+      {% for i in data %}
+    <tr>
+{#      <th>{{ loop.index }}.</th>#}
+      <th><h3>{{ i['title'] }}</h3></th>
+    </tr>
+          <tr>
+      <td><textarea cols="50", rows="10" readonly>{{ i['abstract'] }}</textarea></td>
+          </tr>
+          <tr>
+              <td><br><a href="{{ i['report'] }}" view class="btn btn-success" ><b>Report</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ i['journal'] }}" view class="btn btn-success"><b>Journal</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ i['demo'] }}" view class="btn btn-danger"><b>Demo</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ i['githublink'] }}" view class="btn btn-success" ><b>githublink</b></a></td>
+          </tr>
+          <tr>
+          <td>year :{{ i['p_year'] }}<br><br>Department: {{ i['dept_name'] }}<br> <br>submitted by: {{ i['s_name'] }}</td>
+              <td>project area:{{ i['project_area'] }}</td>
+          <div>
+              <td> <a href="/user_add_rating//{{ i['project_id'] }}">Rate project<br></a></div>
+
+                       <style>
+div.stars {
+  width: 270px;
+  display: inline-block;
+}
+input.star { display: none; }
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #444;
+  transition: all .2s;
+}
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+input.star-5:checked ~ label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952;
+}
+input.star-1:checked ~ label.star:before { color: #F62; }
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+    </style>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+<div class="stars">
+  <form action="">
+    <input class="star star-5" id="star-5" type="radio"  name="star"/>
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" id="star-4" type="radio" name="star"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" id="star-3" type="radio" name="star"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2" id="star-2" type="radio" name="star"/>
+      <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" id="star-1" type="radio" name="star"/>
+    <label class="star star-1" for="star-1"></label>
+  </form>
+
+    <script src="/static/jquery.js"></script>
+    <script >
+    $(document).ready(function () {
+
+        $(document).on('click','#star-5',function () {
+
+
+
+
+            $.getJSON("/user_add_rating_post",{
+                 rat:"5"
+                },function (data) {
+
+alert("hi");
+                }
+                );
+
+        });
+
+
+        $(document).on('click','#star-4',function () {
+
+
+
+
+            $.getJSON("/user_add_rating_post",{
+                 rat:"4"
+                },function (data) {
+
+alert("hi");
+                }
+                );
+
+        });
+
+
+        $(document).on('click','#star-3',function () {
+
+
+
+
+            $.getJSON("/user_add_rating_post",{
+                 rat:"3"
+                },function (data) {
+
+alert("hi");
+                }
+                );
+
+        });
+
+
+        $(document).on('click','#star-2',function () {
+
+
+
+
+            $.getJSON("/user_add_rating_post",{
+                 rat:"2"
+                },function (data) {
+
+alert("hi");
+                }
+                );
+
+        });
+
+
+        $(document).on('click','#star-1',function () {
+
+
+
+
+            $.getJSON("/user_add_rating_post",{
+                 rat:"1"
+                },function (data) {
+
+alert("hi");
+                }
+                );
+
+        });
+    });
+
+
+</script>
+</div>
+{#<div class="stars">#}
+{#  <form action="">#}
+{#    <input class="star star-5" id="star-5" type="radio" name="star"/>#}
+{#    <label class="star star-5" for="star-5"></label>#}
+{#    <input class="star star-4" id="star-4" type="radio" name="star"/>#}
+{#    <label class="star star-4" for="star-4"></label>#}
+{#    <input class="star star-3" id="star-3" type="radio" name="star"/>#}
+{#    <label class="star star-3" for="star-3"></label>#}
+{#    <input class="star star-2" id="star-2" type="radio" name="star"/>#}
+{#    <label class="star star-2" for="star-2"></label>#}
+{#    <input class="star star-1" id="star-1" type="radio" name="star"/>#}
+{#    <label class="star star-1" for="star-1"></label>#}
+{#  </form>#}
+{#</div></td>#}
+          </tr>
+      {% endfor %}
+
+  </table>
+</form>
+  </div>
+{% endblock %}

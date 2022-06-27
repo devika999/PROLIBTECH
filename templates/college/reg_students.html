@@ -1,0 +1,85 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="/reg_students_post">
+<table>
+  <tr>
+    <td>select department:</td>
+    <td>
+      <select name="select" id="select" class="form-control">
+          {% for i in dept %}
+              <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+          {% endfor %}
+      </select>
+    
+  </tr>
+  <tr>
+    <td>select branch:</td>
+    <td>
+      <label for="select2"></label>
+      <select name="select2" id="select2" class="form-control">
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>year of join:</td>
+    <td><label for="select3"></label>
+      <select name="select3" id="select3" class="form-control">
+           {% for i in range(2010,2030) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+    </select></td>
+  </tr>
+  <tr>
+    <td>upload file:</td>
+    <td><label for="fileField"></label>
+    <input type="file" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input name="SUBMIT" type="submit" class="btn- btn-inverse-primary"/></td>
+      <td>To download sample file<a href="/static/student/studentdetails1.csv">CLICK HERE</a></td>
+  </tr>
+</table>
+</form>
+ </div>
+    <script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var id, toid;
+{#alert("hi");#}
+        $("#select").change(function () {
+            var id = $(this).val();
+
+                {#alert( "hii")#}
+                $.ajax({
+                    url: '/brnch2_ajax',
+                    type: 'POST',
+                     dataType: 'json',
+                    data: {'depid': id},
+                    success: function (response) {
+                        $("#select2").empty();
+                        var ln = response["data"].length;
+
+                        for (i = 0; i < ln; i++) {
+                            var id = response["data"][i]["branch_id"];
+                            var name = response["data"][i]["branch_name"];
+                            $("#select2").append("<option value="+id+">"+name+"</option>");
+
+
+
+
+
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert("error   :   ",error);
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+{% endblock %}

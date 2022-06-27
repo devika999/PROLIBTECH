@@ -1,0 +1,30 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form id="form1" name="form1" method="post" action="">
+
+<table class="table table-borderless">
+  <tr>
+    <td height="23"><a href="/add_department" class="btn btn-dark">Add new department</a></td>
+  </tr>
+</table>
+
+  <p>&nbsp;</p>
+      <table class="table table-borderless,table table-striped">
+      <tr style="background-color: lightblue">
+        <th>Sl_No</th>
+        <th>Department Name</th>
+      </tr>
+          {% for i in data %}
+      <tr>
+        <td>&nbsp;{{ loop.index }}</td>
+        <td>&nbsp;{{ i['dept_name'] }}</td>
+         <td><a href="/edit_department/{{ i['dept_id'] }}" class="btn btn-success">Update </a></td>
+          <td><a href="/delete_department/{{ i['dept_id'] }}" class="btn btn-danger">Delete</a></td>
+          <td><a href="/view_branch/{{ i['dept_id'] }}" class="btn btn-primary">View branches</a></td>
+      </tr>
+        {% endfor %}
+  </table>
+</form>
+  </div>
+{% endblock %}

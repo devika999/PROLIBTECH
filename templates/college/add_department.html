@@ -1,0 +1,41 @@
+{% extends "collegehome.html" %}
+{% block body %}
+    <div class="container">
+<form style="width: 500px;height: 200px" id="form1" name="form1" method="post" action="/add_department_post">
+  <table class="table table-borderless">
+
+    <tr>
+
+      <th><label for="textfield">New department name</label>
+{#      <input style="border: 1px solid lightskyblue" type="text" name="textfield" id="textfield" class="form-control"/></th>#}
+    <td>
+<td style="position: absolute;left:220px;"><select name="dept" id="dept" size="1px" class="form-control" style="width: 40%;border:1px solid black;background-color: #b1bcc7">
+            <option value="choosedept" style="text-decoration-style: solid" selected/>choose department</option>
+               <option value="MCA"/>MCA</option>
+            <option value="Civil Engineering"/>Civil Engineering</option>
+            <option value="Production Engineering"/>Production Engineering</option>
+            <option value="Mechanical Engineering"/>Mechanical Engineering</option>
+            <option value="Electronics and Communication Engineering(ECE)"/>Electronics and Communication Engineering(ECE)</option>
+            <option value="Production Engineering"/>Production Engineering</option>
+            <option value="Computer Science and Engineering"/>Computer Science and Engineering</option>
+            <option value="BioMedical Engineering"/>BioMedical Engineering</option>
+            <option value="Electrical Engineering"/>Electrical Engineering</option>
+            <option value="Electrical & Electronics Engineering"/>Electrical & Electronics Engineering</option>
+            <option value="BioTechnology Engineering"/>BioTechnology Engineering</option>
+            <option value="chemical Engineering"/>chemical Engineering</option>
+            <option value="Aeronautical Engineering"/>Aeronautical Engineering</option>
+
+        </select>
+    </td>
+    </tr>
+    <tr>
+      <td><input name="" type="submit" class="btn btn-primary"/></td>
+      <td></td>
+    </tr>
+      <tr>
+          <td><a href="/view_department1"> Back</a></td>
+      </tr>
+  </table>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "collegehome.html" %}
+{% block body %}
+<div class="container">
+<form action="/student_registration_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <table class="table table-borderless">
+    <tr>
+      <th> <a href="/reg_students" class="btn btn-dark">Register students as a file</a></th>
+    </tr>
+  </table>
+    <h2>Student Registration </h2>
+  <table class="table table-borderless">
+    <tr>
+      <th>Name</th>
+      <td><input minlength="6" pattern="[a-zA-Z\s]+" title="must not contain numbers in name. Only alphabhets and white spaces must be included" style="border: 1px solid lightskyblue" type="text" name="textfield" id="textfield" class="form-control" required/></td>
+
+    </tr>
+    
+    <tr>
+      <th>Email</th>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+      <td><input style="border: 1px solid lightskyblue"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" title="Valid email is required: ex@abc.xyz" type="email" name="textfield2" id="textfield2" class="form-control" required/></td>
+        </div>
+    </tr>
+{#    <tr>#}
+{#         <tr>#}
+{#      <th>Register No.</th>#}
+{#        <div>#}
+{#      <td><input style="border: 1px solid lightskyblue" name="textfield4" id="textfield4" class="form-control"/></td>#}
+{#        </div>#}
+{#    </tr>#}
+    <tr>
+      <th>Phone</th>
+      <td><input style="border: 1px solid lightskyblue" type="tel" pattern="[0-9]{10}" size="10" name="textfield3" id="textfield3" class="form-control" required/></td>
+    </tr>
+    <tr>
+       <th>Department</th>
+       <td><label for="select1"></label>
+         <select style="border: 1px solid lightskyblue" name="select1" id="select1" class="form-control" required>
+          <option value=" "></option>
+             {% for i in dept %}
+                  <option value="{{ i["dept_id"] }}">{{ i["dept_name"] }}</option>
+              {% endfor %}
+         </select>
+
+     <tr>
+       <th>Branch</th>
+       <td><label for="select2"></label>
+         <select style="border: 1px solid lightskyblue" name="select2" id="select2" class="form-control" required>
+{#             {% for i in branch %}#}
+{#                  <option value="{{ i["branch_id"] }}">{{ i["branch_name"] }}</option>#}
+{#              {% endfor %}#}
+         </select>
+       
+    <tr>
+      <>
+      <th>year of joining</th>
+  <td><label for="select3"></label>
+        <select style="border: 1px solid lightskyblue" name="select3" id="select3" class="form-control" required>
+      <option></option>
+            {% for i in range(2010,2030) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select></td></tr>
+    <tr>
+      <th>Image</th>
+      <td><input style="border: 1px solid lightskyblue" type="file" name="fileField" id="fileField" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+       <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
+    </tr>
+  </table>
+</form>
+  </div>
+
+
+     <script src="/static/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var id, toid;
+
+        $("#select1").change(function () {
+            var id = $(this).val();
+
+
+                $.ajax({
+                    url: '/branch_ajax',
+                    type: 'POST',
+                     dataType: 'json',
+                    data: {'depid': id},
+                    success: function (response) {
+                        $("#select2").empty();
+                        var ln = response["data"].length;
+
+                        for (i = 0; i < ln; i++) {
+                            var id = response["data"][i]["branch_id"];
+                            var name = response["data"][i]["branch_name"];
+                            $("#select2").append("<option value="+id+">"+name+"</option>");
+
+
+
+
+
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert("error   :   ",error);
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-bordered">
+<tr>
+    <td colspan="2" align="center">
+        Known Words
+    </td>
+</tr>
+    <tr><th>SL No</th>
+    <th>Name</th></tr>
+    {% for i in words %}
+
+
+    <tr>
+       <td>{{ loop.index }}</td>
+    <td>{{ i }}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+</body>
+</html>
